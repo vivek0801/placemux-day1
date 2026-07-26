@@ -1,0 +1,5 @@
+PlaceMux Day 8
+--------------------------
+Training Samples : 455
+Testing Samples  : 114
+Accuracy         : 0.9737
