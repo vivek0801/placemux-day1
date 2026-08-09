@@ -1,0 +1,25 @@
+PlaceMux Day 11 — Stage A
+
+1. What does "good" mean for this task?
+
+A good system should rank items in the order that users are most likely to find relevant. The LTR model should perform better than the existing heuristic on offline ranking metrics and should be suitable for an online experiment.
+
+2. What is the baseline?
+
+The baseline is the current PlaceMux heuristic ranking system.
+
+3. What metrics will decide whether the LTR model is better?
+
+We will use nDCG@K and MAP@K on held-out data.
+
+4. What prerequisites are required?
+
+We need logged impressions, user/item/query information, positions, and interaction outcomes such as clicks or relevance labels.
+
+5. Are the required real interaction logs available in the provided repository?
+
+No. The provided repository does not contain real logged impressions and outcomes required by the Day 11 brief.
+
+6. How will I proceed?
+
+I will build a clearly labelled synthetic/demo interaction dataset to demonstrate the complete LTR pipeline. I will not claim that the synthetic data represents real PlaceMux production data. Production validation would require actual logged interaction data.
