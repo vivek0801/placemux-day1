@@ -1,0 +1,127 @@
+PlaceMux Day 12
+================
+
+Task: Binary Classification
+
+Dataset
+-------
+Total Samples: 569
+Total Features: 30
+
+Train/Validation/Test split:
+Training: 341
+Validation: 114
+Testing: 114
+
+
+Baseline Validation Results
+---------------------------
+Accuracy : 0.9912
+Precision: 0.9861
+Recall   : 1.0000
+F1 Score : 0.9930
+ROC-AUC  : 0.9980
+Log Loss : 0.0620
+
+
+Calibrated Validation Results
+-----------------------------
+Accuracy : 0.9737
+Precision: 0.9595
+Recall   : 1.0000
+F1 Score : 0.9793
+ROC-AUC  : 0.9980
+Log Loss : 0.1245
+
+
+Cost-Optimal Threshold
+----------------------
+False Positive Cost: 10
+False Negative Cost: 1
+
+Best Threshold: 0.77
+Minimum Cost: 6
+
+Performance at Optimal Threshold:
+Accuracy : 0.9474
+Precision: 1.0000
+Recall   : 0.9155
+F1 Score : 0.9559
+
+
+5-Fold Cross Validation
+-----------------------
+Accuracy Mean: 0.9737
+Accuracy Std : 0.0186
+
+Precision Mean: 0.9683
+Precision Std : 0.0324
+
+Recall Mean: 0.9916
+Recall Std : 0.0126
+
+F1 Mean: 0.9794
+F1 Std : 0.0142
+
+ROC-AUC Mean: 0.9953
+ROC-AUC Std : 0.0060
+
+Log Loss Mean: 0.0764
+Log Loss Std : 0.0366
+
+
+Segment Evaluation
+-------------------
+
+Low Mean Radius:
+Accuracy : 0.9825
+Precision: 0.9825
+Recall   : 1.0000
+F1 Score : 0.9912
+ROC-AUC  : 0.9821
+
+High Mean Radius:
+Accuracy : 0.9298
+Precision: 1.0000
+Recall   : 0.7333
+F1 Score : 0.8462
+ROC-AUC  : 1.0000
+
+Low Mean Texture:
+Accuracy : 0.9825
+Precision: 1.0000
+Recall   : 0.9796
+F1 Score : 0.9897
+ROC-AUC  : 1.0000
+
+High Mean Texture:
+Accuracy : 0.9298
+Precision: 0.9500
+Recall   : 0.8636
+F1 Score : 0.9048
+ROC-AUC  : 0.9961
+
+
+Key Findings
+------------
+1. The classifier achieved strong overall performance.
+2. Cross-validation showed stable performance across folds.
+3. The cost-optimal threshold was 0.77.
+4. At this threshold, precision was 1.0000 and recall was 0.9155.
+5. Segment analysis identified lower recall in the High Mean Radius
+   segment (0.7333).
+6. This indicates that the selected operating threshold may cause
+   more false negatives in this segment.
+7. The segment-level difference was documented rather than hidden.
+8. The calibrated classifier was packaged for serving.
+
+
+Final Operating Point
+---------------------
+Decision Threshold: 0.77
+
+False Positive Cost: 10
+False Negative Cost: 1
+
+The threshold was selected by minimizing the specified business
+error cost on the validation data.
