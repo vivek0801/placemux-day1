@@ -1,0 +1,97 @@
+PlaceMux Day 13
+================
+
+Task: Model Score Extraction and Serving
+
+
+Model Interface
+---------------
+Loaded the calibrated classifier produced during Day 12.
+
+Model Version:
+day12-v1
+
+Decision Threshold:
+0.77
+
+Score Meaning:
+Probability of class 1 (benign)
+
+
+Input Contract
+--------------
+The model requires exactly 30 numerical features.
+
+Pydantic validation was implemented to reject:
+- Incorrect feature count
+- Invalid input types
+
+
+Prediction Interface
+--------------------
+Implemented:
+
+predict_single()
+predict_batch()
+
+Single prediction returns:
+- score
+- score_meaning
+- prediction
+- model_version
+
+Batch prediction returns:
+- record_index
+- score
+- score_meaning
+- prediction
+- model_version
+
+
+Error Handling
+--------------
+Invalid inputs are rejected using Pydantic validation.
+
+Tested an input containing only 5 features and confirmed
+that it was rejected with a validation error.
+
+
+API
+---
+Implemented a FastAPI serving interface.
+
+Endpoints:
+
+GET /health
+POST /predict
+POST /predict/batch
+
+
+API Testing
+-----------
+Health endpoint tested successfully.
+
+Single prediction endpoint tested successfully.
+
+Invalid single prediction request was rejected successfully.
+
+Batch prediction endpoint tested successfully.
+
+
+Model Versioning
+----------------
+Every prediction response includes:
+
+model_version: day12-v1
+
+This allows downstream systems to identify which model
+generated a prediction.
+
+
+Conclusion
+----------
+A validated and versioned scoring interface was created
+for both single-record and batch prediction.
+
+The model was exposed through FastAPI and tested using
+Swagger UI.
